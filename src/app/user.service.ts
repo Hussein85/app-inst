@@ -98,7 +98,7 @@ var users = [
 @Injectable()
 export class UserService {
     
-    private usersUrl = 'api/users.json';
+    //private usersUrl = 'api/users.json';
  
     constructor(private http: Http) { }
 
@@ -114,10 +114,12 @@ export class UserService {
 */
 
      scrapeUser(userUrl: string) {
+         /*
         var dataTest = {"userUrl" : userUrl} 
         return this.http.post('http://localhost:8081/scrape', dataTest)
             .map((response: Response) =>  response.json())
             .catch(this.handleError);
+            */
     }
 
 

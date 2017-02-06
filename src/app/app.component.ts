@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
     respTest: any;
 
     insert() {
+      /*
       this.userService.scrapeUser(this.inputUserUrl).subscribe(
         resp => {
           if (resp.isUserValid) {
@@ -55,7 +56,7 @@ export class AppComponent implements OnInit {
         },
         error => this.errorMessage = <any>error);
 
-
+*/
     }
 
     shortenLargeNumber(num: any, digits: any) {
