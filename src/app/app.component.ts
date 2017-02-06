@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
     errorMessage: string;
 
-    users: IUser[];
+    users: any;
 
     constructor(private userService: UserService) {
 
@@ -35,9 +35,8 @@ export class AppComponent implements OnInit {
     }
 
     getUsers() {
-      this.userService.getUsers().subscribe(
-        users => this.users = users,
-        error => this.errorMessage = <any>error);
+      this.users =  this.userService.getUsers();
+     
     }
 
     respTest: any;
