@@ -1,3 +1,157 @@
-<h1>
-  {{title}}
-</h1>
+
+
+<div>
+	<nav class='navbar navbar-default'>
+		<div class='container-fluid'>
+			<a class='navbar-brand'>{{brand}}</a>
+			
+		</div>
+	</nav>
+	<div class='container'>
+		
+
+    
+
+
+
+        <div class="contanier-url col-md-8"> 
+            
+          <div class="row col-md-6">
+              <!-- Form signup -->
+            <form role="form">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="inputUserUrl" [(ngModel)]="inputUserUrl" placeholder="Enter Instagram User URL ...">
+                </div>
+            </form>
+          </div>
+            
+            <div class="col-md-2">
+              <a class="btn btn-primary btn-md btn-block" (click)="insert()">Insert</a>
+            </div>
+          
+        </div>
+
+
+        <div class='panel panel-primary'>
+            <div class='panel-heading'>
+                {{pageTitle}}
+            </div>
+
+            <!-- Filter the Users   -->
+            <div class='panel-body'>
+
+            <div class='row'>
+                <div class='col-md-1 col-md-offset-1'>
+                    <h6>Name</h6>
+                </div>
+                <div class='col-md-1 col-md-offset-1'>
+                    <h6>Followers</h6>
+                </div>
+                <div class='likes col-md-1'>
+                    <h6>Likes</h6>
+                </div>
+                  <div class='eng-rate col-md-2'>
+                    <h6>Engagment rate</h6>
+                </div>
+                <div class='emailTitle col-md-1'>
+                    <h6>Has Email</h6>
+                </div>
+                
+            </div> 
+                <div class='row'>
+                    <div class='col-md-1'>Filter by:</div>
+                    <div class='col-md-1'>
+                        <input type='text' [(ngModel)]='listFilter' />
+                    </div>
+          
+                    <div class="followers col-md-1 col-md-offset-1">
+                        <div data-role="fieldcontain">   
+                            <input type="range" name="slider" [(ngModel)]='followers'  value="0" min="800000" max="10000000" />
+                        </div>
+                    </div>
+
+                    <div class="likes col-md-1">
+                        <div data-role="fieldcontain">      
+                            <input type="range" name="slider" [(ngModel)]='likes'  value="0" min="40000" max="400000" />
+                        </div>
+                    </div>
+
+                    <div class="eng-rate col-md-1">
+                        <div data-role="fieldcontain">        
+                            <input type="range" name="slider" [(ngModel)]='engRate' value="0" min="0" max="4000" />
+                        </div>
+                    </div>
+
+                    <div class="email col-md-1">        
+                        <input type="checkbox" [(ngModel)]='hasEmail'/>                                  
+                    </div> 
+
+                </div>
+
+                <div class='table-responsive'>
+                    <table class='table'
+                          *ngIf='users && users.length'>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>User Name</th>
+                                <th>Full Name</th>
+                                <th>Followers</th>
+                                <th>Avg Likes</th>
+                                <th>Eng Rates</th>
+                                <th>Posts Last 30 Days</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let user of users | userFilter:listFilter | followersFilter:followers | likesFilter:likes | engRateFilter:engRate | emailFilter:hasEmail;  let i = index'>
+                                <td>{{i+1}}</td>
+                                <td>
+                                    <img 
+                                        [src]='user.imageUrl'
+                                        [title]='user.userName | uppercase'
+                                        [style.width.px]='imageWidth' 
+                                        [style.margin.px]='imageMargin'>
+                                </td>
+                                <td>
+                                    <a >
+                                    {{user.userName}}
+                                    </a>
+                                </td>
+                                <td>{{ user.fullName }}</td>
+                                <td>{{ shortenLargeNumber(user.followers, 1) }}</td>
+                                <td>{{ user.avgLikes }}</td>
+                                <td>{{ user.engRates }} %</td>
+                                <td>{{ user.postsLast30Days }}</td>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+	</div>
+</div>
+
+
